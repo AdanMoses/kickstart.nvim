@@ -215,6 +215,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+vim.opt.background = 'dark'
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -628,7 +629,17 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
         --
-
+        groovyls = {
+          settings = {
+            groovy = {
+              classpath = {
+                '~\\AppData\\Local\\nvim-data\\mason\\packages\\groovy-language-server\\build\\libs\\groovy-language-server-all.jar',
+                -- You'll need to adjust the Maven path if it's different on your system
+                'C:\\Users\\adan.moses\\.m2\\repository\\org\\codehaus\\groovy\\groovy-all\\2.4.21\\groovy-all-2.4.21.jar',
+              },
+            },
+          },
+        },
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -643,6 +654,7 @@ require('lazy').setup({
             },
           },
         },
+        omnisharp = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -661,6 +673,10 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'xmlformatter',
+        'prettier',
+        -- 'npm-groovy-lint',
+        'groovy-language-server',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -717,7 +733,9 @@ require('lazy').setup({
         -- python = { "isort", "black" },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
-        -- javascript = { "prettierd", "prettier", stop_after_first = true },
+        javascript = { 'prettier' },
+        xml = { 'xmlformatter' },
+        -- groovy = { 'npm-groovy-lint' },
       },
     },
   },
@@ -838,18 +856,40 @@ require('lazy').setup({
     end,
   },
 
+  -- { -- You can easily change to a different colorscheme.
+  --   -- Change the name of the colorscheme plugin below, and then
+  --   -- change the command in the config to whatever the name of that colorscheme is.
+  --   --
+  --   -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
+  --   'folke/tokyonight.nvim',
+  --   priority = 1000, -- Make sure to load this before all the other start plugins.
+  --   init = function()
+  --     -- Load the colorscheme here.
+  --     -- Like many other themes, this one has different styles, and you could load
+  --     -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+  --     vim.cmd.colorscheme 'default'
+  --
+  --     -- You can configure highlights by doing something like:
+  --     vim.cmd.hi 'Comment gui=none'
+  --   end,
+  -- },
+  -- {
+  --   'polirritmico/monokai-nightasty.nvim',
+  --   lazy = false,
+  --   priority = 1000,
+  -- },
   { -- You can easily change to a different colorscheme.
     -- Change the name of the colorscheme plugin below, and then
     -- change the command in the config to whatever the name of that colorscheme is.
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`.
-    'folke/tokyonight.nvim',
+    'polirritmico/monokai-nightasty.nvim',
     priority = 1000, -- Make sure to load this before all the other start plugins.
     init = function()
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-night'
+      vim.cmd.colorscheme 'monokai-nightasty'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -970,5 +1010,8 @@ require('lazy').setup({
   },
 })
 
+require 'custom/fold'
+require 'custom/keymaps'
+require 'custom/shell'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
