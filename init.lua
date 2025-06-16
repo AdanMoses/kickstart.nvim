@@ -671,22 +671,6 @@ require('lazy').setup({
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
         --
-<<<<<<< HEAD
-        -- css_lsp = {},
-
-=======
-        groovyls = {
-          settings = {
-            groovy = {
-              classpath = {
-                '~\\AppData\\Local\\nvim-data\\mason\\packages\\groovy-language-server\\build\\libs\\groovy-language-server-all.jar',
-                -- You'll need to adjust the Maven path if it's different on your system
-                'C:\\Users\\adan.moses\\.m2\\repository\\org\\codehaus\\groovy\\groovy-all\\2.4.21\\groovy-all-2.4.21.jar',
-              },
-            },
-          },
-        },
->>>>>>> master
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
