@@ -71,7 +71,7 @@ return {
         --     },
         --   },
         -- },
-	css_lsp = {},
+        css_lsp = {},
         groovyls = {
           settings = {
             groovy = {
@@ -97,7 +97,7 @@ return {
       },
     },
   },
-  { 
+  {
     'stevearc/conform.nvim',
     opts = {
       formatters_by_ft = {
@@ -109,7 +109,7 @@ return {
         jsx = { 'prettier' },
         sql = { 'sql_formatter' },
         xml = { 'xmlformatter' },
-      }
-    }
- }
+      },
+    },
+  },
 }
