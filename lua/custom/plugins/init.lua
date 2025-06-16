@@ -71,6 +71,18 @@ return {
         --     },
         --   },
         -- },
+	css_lsp = {},
+        groovyls = {
+          settings = {
+            groovy = {
+              classpath = {
+                '~\\AppData\\Local\\nvim-data\\mason\\packages\\groovy-language-server\\build\\libs\\groovy-language-server-all.jar',
+                -- You'll need to adjust the Maven path if it's different on your system
+                'C:\\Users\\adan.moses\\.m2\\repository\\org\\codehaus\\groovy\\groovy-all\\2.4.21\\groovy-all-2.4.21.jar',
+              },
+            },
+          },
+        },
       },
       -- You might also want to ensure the new language server tools are installed by mason
       ensure_installed = {
@@ -80,7 +92,24 @@ return {
         'prettier',
         'superhtml',
         'sql-formatter',
+        'xmlformatter',
+        'groovy-language-server',
       },
     },
   },
+  { 
+    'stevearc/conform.nvim',
+    opts = {
+      formatters_by_ft = {
+        javascript = { 'prettier' },
+        typescript = { 'prettier' },
+        scss = { 'prettier' },
+        css = { 'prettier' },
+        html = { 'prettier' },
+        jsx = { 'prettier' },
+        sql = { 'sql_formatter' },
+        xml = { 'xmlformatter' },
+      }
+    }
+ }
 }
