@@ -106,9 +106,37 @@ return {
         scss = { 'prettier' },
         css = { 'prettier' },
         html = { 'prettier' },
-        jsx = { 'prettier' },
+        jsx = { 'prettier' }, -- For React JSX files
+        json = { 'prettier' },
         sql = { 'sql_formatter' },
         xml = { 'xmlformatter' },
+      },
+    },
+  },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    opts = {
+      -- The list of parsers to ensure are installed.
+      -- This list replaces the one from init.lua, so we must include the defaults.
+      ensure_installed = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        -- Add your desired parsers for web development here
+        'javascript',
+        'typescript',
+        'tsx',
+        'json',
+        'css',
+        'scss',
       },
     },
   },
