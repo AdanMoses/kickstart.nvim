@@ -110,6 +110,7 @@ return {
         json = { 'prettier' },
         sql = { 'sql_formatter' },
         xml = { 'xmlformatter' },
+        tsx = { 'prettier' }, -- For React TSX files
       },
     },
   },
