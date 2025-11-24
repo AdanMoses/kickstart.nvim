@@ -59,7 +59,7 @@ return {
     opts = {
       servers = {
         -- Add a new server to the list
-        ts_ls = {},
+        -- ts_ls = {},
         -- You can also override settings for an existing server
         -- For example, to disable a diagnostic for lua_ls that you find noisy:
         -- lua_ls = {
@@ -113,6 +113,7 @@ return {
         tsx = { 'prettier' }, -- For React TSX files
       },
     },
+    notify_on_error = true,
   },
   {
     'nvim-treesitter/nvim-treesitter',
@@ -131,14 +132,17 @@ return {
         'query',
         'vim',
         'vimdoc',
-        -- Add your desired parsers for web development here
         'javascript',
         'typescript',
-        'tsx',
         'json',
         'css',
         'scss',
       },
     },
+  },
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    opts = {},
   },
 }
