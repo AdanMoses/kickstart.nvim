@@ -111,6 +111,7 @@ return {
         sql = { 'sql_formatter' },
         xml = { 'xmlformatter' },
         tsx = { 'prettier' }, -- For React TSX files
+        typescriptreact = { 'prettier' },
       },
     },
     notify_on_error = true,
@@ -137,6 +138,7 @@ return {
         'json',
         'css',
         'scss',
+        'tsx',
       },
     },
   },
