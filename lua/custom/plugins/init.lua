@@ -59,7 +59,7 @@ return {
     opts = {
       servers = {
         -- Add a new server to the list
-        -- ts_ls = {},
+        ts_ls = {},
         -- You can also override settings for an existing server
         -- For example, to disable a diagnostic for lua_ls that you find noisy:
         -- lua_ls = {
@@ -142,9 +142,9 @@ return {
       },
     },
   },
-  {
-    'pmizio/typescript-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-  },
+  -- {
+  --   'pmizio/typescript-tools.nvim',
+  --   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  --   opts = {},
+  -- },
 }
